@@ -6,6 +6,6 @@ environment:
 
 install:
   - mkdir sfdx
-  - wget -qO- $CLIURL | tar xJ -C sfdx --strip-components 1
+  - wget -qO- $(CLIURL) | tar xJ -C sfdx --strip-components 1
   - "./sfdx/install"
   - export PATH=./sfdx/$(pwd):$PATH
