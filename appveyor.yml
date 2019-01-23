@@ -11,4 +11,12 @@ install:
   - "./sfdx/install"
   - export PATH=./sfdx/$(pwd):$PATH
 
-build: off
+before_build:
+  #Assign variables
+  - export DEPLOYDIR=src
+  - export TESTLEVEL=RunLocalTests
+  - sfdx --version
+  - sfdx plugins --core
+
+build_script:
+  -echo ${DEPLOYDIR}
