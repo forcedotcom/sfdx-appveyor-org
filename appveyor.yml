@@ -1,11 +1,12 @@
 version: 1.0.{build}
 
+image: ubuntu
 # environment variables
 environment:
   CLIURL: https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
 
 install:
   - mkdir sfdx
-  - wget -qO- $(CLIURL) | tar xJ -C sfdx --strip-components 1
+  - wget -qO- $CLIURL | tar xJ -C sfdx --strip-components 1
   - "./sfdx/install"
   - export PATH=./sfdx/$(pwd):$PATH
