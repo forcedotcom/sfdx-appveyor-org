@@ -4,7 +4,7 @@ image: ubuntu
 
 install:
   #
-  # The install step will download the Salesforce CLI and install it and where variables are defined.
+  # Download Salesforce CLI and define the required environment variables
   #
   #Assign variables
   - export CLIURL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
@@ -16,7 +16,7 @@ install:
   - export DEPLOYDIR=src
   - export TESTLEVEL=RunLocalTests
 
-  #Create SFDX directory
+  #Create sfdx directory
   - mkdir sfdx
 
   #Install Salesforce CLI
@@ -36,5 +36,5 @@ build_script:
   #Deploy to target deployment org and run unit tests
   - sfdx force:mdapi:deploy --wait 10 --deploydir $DEPLOYDIR --targetusername UAT --testlevel $TESTLEVEL
   
-  #Example shows how to run a check only deploy.
+  #Example shows how to run a check-only deploy.
   #- sfdx force:mdapi:deploy --checkonly --wait 10 --deploydir $DEPLOYDIR --targetusername UAT --testlevel $TESTLEVEL
