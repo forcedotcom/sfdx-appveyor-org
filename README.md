@@ -46,11 +46,13 @@ openssl enc -nosalt -aes-256-cbc -in your_key_location/server.key -out assets/se
 
 8) Store the user name that you use to access your target org in an AppVeyor environment variable named `USER_NAME` using the AppVeyor UI. Note that this username is the username that you use to login into your target org.
 
-9) Store the `key` and `iv` values in AppVeyor environment variables named `DECRYPTION_KEY` and `DECRYPTION_IV`, respectively. When finished setting environment variables, the environment variables setup screen should look like the one below.
+9) Store the endpoint that you use to login your target org in a CircleCI environment variable named `ENDPOINT`. **Note** - this is the endpoint that you use to log in to your target org (e.g. login.salesforce.com).
+
+10) Store the `key` and `iv` values in AppVeyor environment variables named `DECRYPTION_KEY` and `DECRYPTION_IV`, respectively. When finished setting environment variables, the environment variables setup screen should look like the one below.
 
 ![alt text](assets/images/variables.png)
 
-10) Commit the updated `server.key.enc` file.
+11) Commit the updated `server.key.enc` file.
 
 Now you're ready to go! When you commit and push a change, your change kicks off a AppVeyor build.
 
