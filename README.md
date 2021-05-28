@@ -50,8 +50,6 @@ openssl enc -nosalt -aes-256-cbc -in your_key_location/server.key -out assets/se
 
 10) Store the `key` and `iv` values in AppVeyor environment variables named `DECRYPTION_KEY` and `DECRYPTION_IV`, respectively. When finished setting environment variables, the environment variables setup screen should look like the one below.
 
-11) Store the login URL of the instance the org lives on in a Bitbucket Pipeplines environment variable named `ENDPOINT` using the Bitbucket Pipeplines UI.
-
 ![alt text](assets/images/variables.png)
 
 12) Commit the updated `server.key.enc` file.
