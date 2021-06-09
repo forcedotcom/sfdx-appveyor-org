@@ -8,6 +8,7 @@ install:
   #
   #Assign variables
   - export CLIURL=https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
+  - export INSTANCE_URL=https://test.salesforce.com
   - export SFDX_AUTOUPDATE_DISABLE=false
   - export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
   - export SFDX_DOMAIN_RETRY=300
@@ -31,7 +32,7 @@ build_script:
   - openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out assets/server.key -base64 -K $DECRYPTION_KEY -iv $DECRYPTION_IV
 
   #Authorize target org
-  - sfdx auth:jwt:grant --instanceurl $ENDPOINT  --clientid $CONSUMER_KEY --jwtkeyfile assets/server.key --username $USER_NAME --setalias UAT
+  - sfdx auth:jwt:grant --instanceurl ${INSTANCE_URL-$ENDPOINT}  --clientid $CONSUMER_KEY --jwtkeyfile assets/server.key --username $USER_NAME --setalias UAT
 
   #Deploy to target deployment org and run unit tests
   - sfdx force:mdapi:deploy --wait 10 --deploydir $DEPLOYDIR --targetusername UAT --testlevel $TESTLEVEL
