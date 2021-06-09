@@ -46,15 +46,29 @@ openssl enc -nosalt -aes-256-cbc -in your_key_location/server.key -out assets/se
 
 8) Store the user name that you use to access your target org in an AppVeyor environment variable named `USER_NAME` using the AppVeyor UI. Note that this username is the username that you use to login into your target org.
 
-9) Store the `key` and `iv` values in AppVeyor environment variables named `DECRYPTION_KEY` and `DECRYPTION_IV`, respectively. When finished setting environment variables, the environment variables setup screen should look like the one below.
+9) Store the endpoint that you use to login your target org in a CircleCI environment variable named `ENDPOINT`. **Note** - this is the endpoint that you use to log in to your target org (e.g. login.salesforce.com).
+
+10) Store the `key` and `iv` values in AppVeyor environment variables named `DECRYPTION_KEY` and `DECRYPTION_IV`, respectively. When finished setting environment variables, the environment variables setup screen should look like the one below.
 
 ![alt text](assets/images/variables.png)
 
-10) Commit the updated `server.key.enc` file.
+12) Commit the updated `server.key.enc` file.
 
 Now you're ready to go! When you commit and push a change, your change kicks off a AppVeyor build.
 
 Enjoy!
+
+## Environment Variables
+
+| Env Var                       | Description                                                                                                     |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| CONSUMER_KEY                  | From your JWT-based connected app on Salesforce, retrieve the generated `Consumer Key` from your Dev Hub org.   |
+| USER_NAME                     | This username is the username that you use to access your Dev Hub.                                              |
+| ENDPOINT                      | the login URL of the instance the org lives on.                                                                 |
+| DECRYPTION_KEY                | `server.key` encryption key.                                                                                    |
+| DECRYPTION_IV                 | `server.key` encryption initialization Vector.                                                                  |
+| DX_CLI_URL_CUSTOM             | By default, the script installs the current version of Salesforce CLI. To install the release candidate, set the `DX_CLI_URL_CUSTOM` local variable to the appropriate URL.|
+
 
 ## Contributing to the Repository ###
 
